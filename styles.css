@@ -1,0 +1,75 @@
+/* Estilo general de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal de la aplicación */
+.contenedor {
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilo para el título */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Estilo para el campo de texto */
+input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Estilo para los botones */
+button {
+    padding: 10px 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+/* Estilo para la lista de tareas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Estilo para cada tarea */
+li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Tareas completadas */
+li.completada {
+    text-decoration: line-through;
+    color: gray;
+}
+
+input[type="checkbox"] {
+    margin-left: 10px;
+}

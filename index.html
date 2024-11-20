@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            margin: 20px;
+        }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-list li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Tareas</h1>
+    </header>
+    
+    <div class="content">
+        <input type="text" id="taskDescription" placeholder="Ingrese una nueva tarea" />
+        <button onclick="addTask()">Agregar tarea</button>
+        <ul class="task-list" id="taskList"></ul>
+        <div class="alert" id="errorMessage"></div>
+        <button onclick="deleteTask()">Eliminar tarea seleccionada</button>
+    </div>
+
+    <script>
+        function addTask() {
+            const taskDescription = document.getElementById("taskDescription").value;
+            if (taskDescription.trim() === "") {
+                document.getElementById("errorMessage").innerText = "¡La descripción de la tarea no puede estar vacía!";
+                return;
+            }
+            document.getElementById("errorMessage").innerText = "";
+
+            const taskList = document.getElementById("taskList");
+            const taskItem = document.createElement("li");
+            taskItem.textContent = taskDescription;
+            taskItem.onclick = function() {
+                this.classList.toggle("selected");
+            };
+            taskList.appendChild(taskItem);
+
+            document.getElementById("taskDescription").value = ""; // Limpiar el campo de texto
+        }
+
+        function deleteTask() {
+            const selectedTasks = document.querySelectorAll(".task-list li.selected");
+            if (selectedTasks.length === 0) {
+                document.getElementById("errorMessage").innerText = "¡Debe seleccionar una tarea para eliminarla!";
+                return;
+            }
+            document.getElementById("errorMessage").innerText = "";
+
+            selectedTasks.forEach(task => {
+                task.remove();
+            });
+        }
+    </script>
+</body>
+</html>
